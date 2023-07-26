@@ -1,0 +1,30 @@
+######## Docker-compose.yaml ########
+
+version: "3"
+services: 
+  tomcatapp:
+    container_name: tomcat01
+    hostname: tomcat
+    image: tomcatapp
+    ports:
+      - "5689:8080"
+network:
+  default:
+    name: app
+    external: true
+
+
+version: "2.2"
+services: 
+  tomcatapp:
+    container_name: tomcat11
+    hostname: tomcat
+    image: tomcatapp
+    ports:
+      - "5689:8080"
+    volumes:
+      - "/home/ubuntu/logs/:/usr/local/tomcat/logs"
+network:
+  default:
+    name: app
+    external: true
